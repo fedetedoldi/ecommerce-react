@@ -1,9 +1,17 @@
 import React from "react";
+import { Badge } from "react-bootstrap";
 
-const CartWidget = (props) => {
-    return (
-        <i className="bi bi-cart3 text-light">4</i>
-    )
-}
+import { FaShoppingCart } from "react-icons/fa";
+
+const CartWidget = () => {
+  return (
+    <div>
+      <FaShoppingCart />
+      <Badge variant="primary" className="ml-1">
+        4
+      </Badge>
+    </div>
+  );
+};
 
 export default CartWidget;

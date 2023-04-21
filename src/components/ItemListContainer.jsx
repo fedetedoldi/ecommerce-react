@@ -1,9 +1,5 @@
 import React from "react";
 
-const ItemListContainer = ({saludo}) => {
-    return (
-        <h1 className="saludo"> {saludo} </h1>
-    )
+export default function ItemListContainer() {
+  return <div>ItemListContainer</div>;
 }
-
-export default ItemListContainer;

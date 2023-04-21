@@ -1,27 +1,42 @@
-import React from "react";
-import ListOptionNavBar from "./ListOptionNavBar";
+import Container from "react-bootstrap/Container";
+import { NavDropdown } from "react-bootstrap";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 import CartWidget from "./CartWidget";
+import { Link } from "react-router-dom";
 
-const NavBar = (props) => {
-    const nameOptions = ["Inicio", "Productos", "Contacto"];
-    return (
-        <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div className="container-fluid">
-                    <span className="navbar-brand">
-                        <img width={50} height={50} src="https://previews.123rf.com/images/angelp/angelp1611/angelp161101147/68887708-tienda-tienda-icono-fondo-negro-con-blanco-ilustraci%C3%B3n-del-vector.jpg" alt="logo" />
-                    </span>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNav">
-                        <ListOptionNavBar nameOption={nameOptions} />
-                        <CartWidget />
-                    </div>
-                </div>
-            </nav>
-        </div>
-    );
+function NavBar() {
+  return (
+    <Navbar bg="dark" expand="lg">
+      <Container>
+        <Navbar.Brand href="#home">
+          <Link to="/">TIENDA ONLINE</Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#home">
+              <Link to="/">Inicio</Link>
+            </Nav.Link>
+            <NavDropdown title="Categorias" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">
+                <Link to="/category/:id">CALZADO</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                <Link to="/category/:id">INDUMENTARIA</Link>
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href="#home">
+              <Link to="/item/:id">Items</Link>
+            </Nav.Link>
+            <button type="button" class="btn btn-outline-secondary">
+              <CartWidget />
+            </button>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
 
 export default NavBar;
