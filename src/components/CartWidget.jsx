@@ -1,13 +1,12 @@
 import React from "react";
-import { Badge } from "react-bootstrap";
-
 import { FaShoppingCart } from "react-icons/fa";
+import { Badge } from "react-bootstrap";
 
 const CartWidget = () => {
   return (
     <div>
       <FaShoppingCart />
-      <Badge variant="primary" className="ml-1">
+      <Badge bg="light" text="dark">
         4
       </Badge>
     </div>

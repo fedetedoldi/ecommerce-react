@@ -1,22 +1,48 @@
+import { useState } from "react";
 import "./App.css";
-import HomeContainer from "./components/Home";
 import ItemListContainer from "./components/ItemListContainer";
-import ItemDetailContainer from "./components/ItemDetailContainer";
 import NavBar from "./components/NavBar";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
+  const [count, setCount] = useState(0);
+  const items = [
+    {
+      title: "Remera",
+      description: "Negra Talle L",
+      price: 100,
+    },
+    {
+      title: "Buzo",
+      description: "Rojo Talle XL",
+      price: 200,
+    },
+    {
+      title: "Pantalon",
+      description: "Jean Talle L",
+      price: 300,
+    },
+  ];
+
+  const updateCount = () => {
+    setCount(count + 1);
+  };
+
   return (
-    <Router>
-      <div className="App">
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<HomeContainer greeting="ROPA MULTIMARCA" />} />
-          <Route path="/category/:id" element={<ItemListContainer />} />
-          <Route path="/item/:id" element={<ItemDetailContainer />} />
-        </Routes>
+    <div>
+      <NavBar />
+      <div className="container">
+        <h1> Total: {count} </h1>
+        {items.map((item, index) => {
+          return (
+            <ItemListContainer
+              key={index}
+              data={item}
+              handlerUpdate={updateCount}
+            />
+          );
+        })}
       </div>
-    </Router>
+    </div>
   );
 }
 
