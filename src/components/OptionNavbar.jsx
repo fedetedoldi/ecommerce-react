@@ -1,9 +1,17 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const OptionNavBar = (props) => {
   const { titleOption } = props;
+  const isActiveClass = ({ isActive }) => {
+    return isActive ? "active nav-link text-primary" : "nav-link";
+  };
 
-  return <span className="nav-link">{titleOption}</span>;
+  return (
+    <NavLink to={`/category/${titleOption}`} className={isActiveClass}>
+      {titleOption}
+    </NavLink>
+  );
 };
 
 export default OptionNavBar;
