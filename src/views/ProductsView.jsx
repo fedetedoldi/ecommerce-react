@@ -1,20 +1,14 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import ItemListContainer from "../components/ItemListContainer";
 import useFetch from "../utils/useFetch";
 const BASE_URL = "https://fakestoreapi.com/products";
 
 const ProductsView = (props) => {
-  const [count, setCount] = useState(0);
   const { data, loading } = useFetch(BASE_URL);
-
-  const updateCount = () => {
-    setCount(count + 1);
-  };
 
   return (
     <Fragment>
-      <div className="container">
-        <h1>Total: {count} </h1>
+      <div className="container mt-4">
         <div className="row row-cols-1 row-cols-md-3 g-4">
           {loading ? (
             <h1>Estamos cargando el catálogo...</h1>
@@ -22,7 +16,7 @@ const ProductsView = (props) => {
             data.map((item, index) => {
               return (
                 <div key={index} className="col">
-                  <ItemListContainer data={item} handlerUpdate={updateCount} />
+                  <ItemListContainer data={item} />
                 </div>
               );
             })

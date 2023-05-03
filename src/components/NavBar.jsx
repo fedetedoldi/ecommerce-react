@@ -3,10 +3,11 @@ import ListOptionNavBar from "./ListOptionNavbar";
 import CartWidget from "./CartWidget";
 import { NavLink } from "react-router-dom";
 import useFetch from "../utils/useFetch";
+import { routes } from "../routes";
 const BASE_URL = "https://fakestoreapi.com/products/categories";
 
 const NavBar = (props) => {
-  const {data} = useFetch(BASE_URL);
+  const { data } = useFetch(BASE_URL);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -32,13 +33,13 @@ const NavBar = (props) => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav">
-            <ListOptionNavBar nameOption={data} />
-            <button className="d-flex btn btn-outline-secondary">
-              <CartWidget />
-            </button>
-          </div>
+          <ListOptionNavBar nameOption={data} />
         </div>
+        <NavLink to={routes.detailCartView} >
+          <button type="text" className="btn btn-outline-secondary">
+            <CartWidget />
+          </button>
+        </NavLink>
       </div>
     </nav>
   );

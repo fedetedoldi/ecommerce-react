@@ -26,7 +26,7 @@ const ItemListContainer = (props) => {
 
         <NavLink to={`/products/detail/${idProduct}`}>
           <button
-            className="btn btn-outline-danger btn-sm"
+            className="btn btn-outline-dark btn-sm"
             onClick={handlerActionAdd}
           >
             + info

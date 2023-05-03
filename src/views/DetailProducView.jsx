@@ -1,20 +1,20 @@
-import React, { Fragment } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { Fragment, useContext } from "react";
+import { useParams } from "react-router-dom";
 import useFetch from "../utils/useFetch";
+import GeneralContext from "../context/GeneralContext";
 
 const BASE_URL = "https://fakestoreapi.com/products";
 
 const DetailProductView = () => {
   const { idProduct } = useParams();
-  const navigator = useNavigate();
+  const { addToCart} = useContext(GeneralContext);
 
-  const {data} = useFetch(`${BASE_URL}/${idProduct}`);
+  const { data } = useFetch(`${BASE_URL}/${idProduct}`);
+  const { title, image, description, price, category } = data;
 
   const addBtnAction = () => {
-    navigator("/");
+    addToCart(data);
   };
-
-  const { title, image, description, price, category } = data;
 
   return (
     <Fragment>
@@ -52,7 +52,7 @@ const DetailProductView = () => {
                     onClick={addBtnAction}
                     className="btn btn-outline-danger btn-sm"
                   >
-                    Comprar
+                    Agregar 
                   </button>
                 </div>
               </div>
