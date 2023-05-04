@@ -34,6 +34,7 @@ function App() {
 
           <Route path={routes.aboutView} element={<AboutView />} />
           <Route path={routes.detailCartView} element={<DetailCartView />} />
+          <Route path={routes.categories} element={<ProductsView />} />
         </Routes>
       </BrowserRouter>
     </GeneralContext.Provider>

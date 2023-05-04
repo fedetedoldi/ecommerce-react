@@ -7,8 +7,8 @@ const DetailCartView = () => {
   return (
     <Fragment>
       <div className="container mt-3" >
-        {cart.map((item) => (
-          <ItemListContainer data={item} />
+        {cart.map((item,index) => (
+          <ItemListContainer key={index} data={item} />
         ))}
       </div>
     </Fragment>

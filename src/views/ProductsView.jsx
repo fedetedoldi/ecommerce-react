@@ -1,10 +1,16 @@
 import React, { Fragment } from "react";
 import ItemListContainer from "../components/ItemListContainer";
 import useFetch from "../utils/useFetch";
+import { useParams } from "react-router-dom";
 const BASE_URL = "https://fakestoreapi.com/products";
+const URL_CATEGORY = "category";
 
 const ProductsView = (props) => {
-  const { data, loading } = useFetch(BASE_URL);
+  const { category } = useParams();
+  const final_url = category
+    ? `${BASE_URL}/${URL_CATEGORY}/${category}`
+    : BASE_URL;
+  const { data, loading } = useFetch(final_url);
 
   return (
     <Fragment>
